@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("GTD.RongCloud")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("融云C#SDK")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Company")]
+[assembly: AssemblyCompany("Traceless")]
 [assembly: AssemblyProduct("GTD.RongCloud")]
 [assembly: AssemblyCopyright("Copyright © Company 2018")]
 [assembly: AssemblyTrademark("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("134c3da6-c5b0-4f31-8d51-d304c83da7cf")]
+[assembly: Guid("8a1d5603-9b93-4f18-8d55-e08abc016c78")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // 可以指定所有值，也可以使用以下所示的 "*" 预置版本号和修订号
 //通过使用 "*"，如下所示:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.2.0")]
+[assembly: AssemblyFileVersion("1.0.2.0")]
