@@ -3,6 +3,9 @@
 这是一个融云Server API C# SDK类库，以
 [融云官方DOTNET库](https://github.com/rongcloud/server-sdk-dotnet) 为基础开发。
 
+# 更新日志
+
+1.0.2.12-增加自定义消息，使得可以通过Txtmsg发送自定义消息类型
 
 # API文档
 - 官方文档(http://www.rongcloud.cn/docs/server.html)
