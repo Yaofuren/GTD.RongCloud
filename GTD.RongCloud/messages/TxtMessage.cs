@@ -35,7 +35,7 @@ namespace GTD.RongCloud.messages {
 		}
 		public void setMsgType(string type)
 		{
-			TYPE="RC:"+type;
+			TYPE=type;
 		}
 		public String getType() {
 			return TYPE;
