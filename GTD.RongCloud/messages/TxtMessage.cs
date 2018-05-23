@@ -17,7 +17,7 @@ namespace GTD.RongCloud.messages {
 		private String content = "";
 		[JsonProperty]
 		private String extra = "";
-		private  static  String TYPE = "RC:TxtMsg";
+		private String TYPE = "RC:TxtMsg";
 		
 		public TxtMessage() {
 
