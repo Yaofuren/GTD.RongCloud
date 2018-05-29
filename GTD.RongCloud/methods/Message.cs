@@ -193,7 +193,7 @@ namespace GTD.RongCloud.methods {
             }
 
             postStr += "objectName=" + HttpUtility.UrlEncode(message.getType(), Encoding.UTF8) + "&";
-            postStr += "content=" + HttpUtility.UrlEncode(message.contenttoString(), Encoding.UTF8) + "&";
+            postStr += "content=" + HttpUtility.UrlEncode(message.getContent(), Encoding.UTF8) + "&";
             postStr += "pushContent=" + HttpUtility.UrlEncode(pushContent == null ? "" : pushContent, Encoding.UTF8) + "&";
             postStr += "pushData=" + HttpUtility.UrlEncode(pushData == null ? "" : pushData, Encoding.UTF8) + "&";
             postStr += "isPersisted=" + HttpUtility.UrlEncode(Convert.ToString(isPersisted) == null ? "" : Convert.ToString(isPersisted), Encoding.UTF8) + "&";
