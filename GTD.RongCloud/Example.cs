@@ -89,7 +89,7 @@ namespace GTD.RongCloud {
 
             // 发送自定义系统消息方法（一个用户向一个或多个用户发送系统消息，单条消息最大 128k，会话类型为 SYSTEM。每秒钟最多发送 100 条消息，每次最多同时向 100 人发送，如：一次发送 100 人时，示为 100 条消息。） 
             String[] messagepublishCusSystemToUserId = { "userId2", "userid3", "userId4" };
-            TxtMessage messagepublishCusSystemTxtMessage = new TxtMessage("hello", "helloExtra","youcusType");
+            TxtMessage messagepublishCusSystemTxtMessage = new TxtMessage("hello", "自定义消息该字段被废弃，随便填","youcusType");
             CodeSuccessReslut messagepublishCusSystemResult = rongcloud.message.PublishSystem("userId1", messagepublishSystemToUserId, messagepublishSystemTxtMessage, "thisisapush", "{\"pushData\":\"hello\"}", 0, 0);
             Console.WriteLine("message.PublishSystem:  " + messagepublishSystemResult.toString());
             Console.ReadKey();

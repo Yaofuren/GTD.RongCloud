@@ -146,7 +146,62 @@ namespace GTD.RongCloud.methods {
 	    	
           	return (CodeSuccessReslut) RongJsonUtil.JsonStringToObj<CodeSuccessReslut>(RongHttpClient.ExecutePost(appKey, appSecret, RongCloud.RONGCLOUDURI+"/message/system/publish.json", postStr, "application/x-www-form-urlencoded" ));
 		}
-            
+
+
+        /**
+	 	 * 发送自定义系统消息方法（message中的extra被废弃）（一个用户向一个或多个用户发送系统消息，单条消息最大 128k，会话类型为 SYSTEM。每秒钟最多发送 100 条消息，每次最多同时向 100 人发送，如：一次发送 100 人时，示为 100 条消息。） 
+	 	 * 
+	 	 * @param  fromUserId:发送人用户 Id。（必传）
+	 	 * @param  toUserId:接收用户 Id，提供多个本参数可以实现向多人发送消息，上限为 1000 人。（必传）
+	 	 * @param  txtMessage:发送消息内容（必传）
+	 	 * @param  pushContent:如果为自定义消息，定义显示的 Push 内容，内容中定义标识通过 values 中设置的标识位内容进行替换.如消息类型为自定义不需要 Push 通知，则对应数组传空值即可。（可选）
+	 	 * @param  pushData:针对 iOS 平台为 Push 通知时附加到 payload 中，Android 客户端收到推送消息时对应字段名为 pushData。如不需要 Push 功能对应数组传空值即可。（可选）
+	 	 * @param  isPersisted:当前版本有新的自定义消息，而老版本没有该自定义消息时，老版本客户端收到消息后是否进行存储，0 表示为不存储、 1 表示为存储，默认为 1 存储消息。（可选）
+	 	 * @param  isCounted:当前版本有新的自定义消息，而老版本没有该自定义消息时，老版本客户端收到消息后是否进行未读消息计数，0 表示为不计数、 1 表示为计数，默认为 1 计数，未读消息数增加 1。（可选）
+		 *
+	 	 * @return CodeSuccessReslut
+	 	 **/
+        public CodeSuccessReslut PublishCusSystem(String fromUserId, String[] toUserId, TxtMessage message, String pushContent, String pushData, int isPersisted, int isCounted)
+        {
+
+            if (fromUserId == null)
+            {
+                throw new ArgumentNullException("Paramer 'fromUserId' is required");
+            }
+
+            if (toUserId == null)
+            {
+                throw new ArgumentNullException("Paramer 'toUserId' is required");
+            }
+
+            if (message.getType() == null)
+            {
+                throw new ArgumentNullException("Paramer 'ObjectName' is required");
+            }
+
+            if (message.toString() == null)
+            {
+                throw new ArgumentNullException("Paramer 'Content' is required");
+            }
+
+            String postStr = "";
+            postStr += "fromUserId=" + HttpUtility.UrlEncode(fromUserId == null ? "" : fromUserId, Encoding.UTF8) + "&";
+            for (int i = 0; i < toUserId.Length; i++)
+            {
+                String child = toUserId[i];
+                postStr += "toUserId=" + HttpUtility.UrlEncode(child, Encoding.UTF8) + "&";
+            }
+
+            postStr += "objectName=" + HttpUtility.UrlEncode(message.getType(), Encoding.UTF8) + "&";
+            postStr += "content=" + HttpUtility.UrlEncode(message.contenttoString(), Encoding.UTF8) + "&";
+            postStr += "pushContent=" + HttpUtility.UrlEncode(pushContent == null ? "" : pushContent, Encoding.UTF8) + "&";
+            postStr += "pushData=" + HttpUtility.UrlEncode(pushData == null ? "" : pushData, Encoding.UTF8) + "&";
+            postStr += "isPersisted=" + HttpUtility.UrlEncode(Convert.ToString(isPersisted) == null ? "" : Convert.ToString(isPersisted), Encoding.UTF8) + "&";
+            postStr += "isCounted=" + HttpUtility.UrlEncode(Convert.ToString(isCounted) == null ? "" : Convert.ToString(isCounted), Encoding.UTF8) + "&";
+            postStr = postStr.Substring(0, postStr.LastIndexOf('&'));
+
+            return (CodeSuccessReslut)RongJsonUtil.JsonStringToObj<CodeSuccessReslut>(RongHttpClient.ExecutePost(appKey, appSecret, RongCloud.RONGCLOUDURI + "/message/system/publish.json", postStr, "application/x-www-form-urlencoded"));
+        }
         /**
 	 	 * 发送系统模板消息方法（一个用户向一个或多个用户发送系统消息，单条消息最大 128k，会话类型为 SYSTEM.每秒钟最多发送 100 条消息，每次最多同时向 100 人发送，如：一次发送 100 人时，示为 100 条消息。） 
 	 	 * 
@@ -154,7 +209,7 @@ namespace GTD.RongCloud.methods {
 		 *
 	 	 * @return CodeSuccessReslut
 	 	 **/
-		public  CodeSuccessReslut publishSystemTemplate(TemplateMessage templateMessage) {
+        public  CodeSuccessReslut publishSystemTemplate(TemplateMessage templateMessage) {
 
 			if(templateMessage == null) {
 				throw new ArgumentNullException("Paramer 'templateMessage' is required");

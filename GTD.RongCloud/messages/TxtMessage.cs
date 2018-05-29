@@ -75,8 +75,15 @@ namespace GTD.RongCloud.messages {
 		 */
 		public void setExtra(String extra) {
 			this.extra = extra;
-		}  
-		
+		}
+
+	    public string contenttoString()
+	    {
+	        JsonSerializerSettings jsetting = new JsonSerializerSettings();
+	        jsetting.NullValueHandling = NullValueHandling.Ignore;
+	        return JsonConvert.SerializeObject(this.content);
+        }
+
 		public string toString() {
             JsonSerializerSettings jsetting = new JsonSerializerSettings();
             jsetting.NullValueHandling = NullValueHandling.Ignore;
