@@ -5,6 +5,8 @@
 
 # 更新日志
 
+1.0.2.14-在TxtMessage用作自定义消息时，废弃Extra直接使用Content内容作为参数值
+
 1.0.2.13-修复自定义消息默认以RC:开头不能修改的问题，现在完全自定义了
 
 1.0.2.12-增加自定义消息，使得可以通过Txtmsg发送自定义消息类型
@@ -32,6 +34,7 @@
 - publishPrivate  发送单聊消息
 - publishTemplate  发送单聊模板消息
 - PublishSystem  发送系统消息
+- PublishCusSystem  发送自定义系统消息
 - publishSystemTemplate  发送系统模板消息
 - publishGroup  发送群组消息
 - publishDiscussion  发送讨论组消息
